@@ -41,6 +41,21 @@ console.log("Code aik dum must chal rha abhi tak");
 
 // Initialize express
 const app = express();
+app.use(
+  session({
+    secret: process.env.JWT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: 'sessions',
+    }),
+    cookie: {
+      secure: false, // true if you're using HTTPS
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+    },
+  })
+);
 
 // CORS configuration
 app.use(cors({
