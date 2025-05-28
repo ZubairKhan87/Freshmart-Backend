@@ -10,6 +10,8 @@ const AdminBro = require('admin-bro');
 const AdminBroExpress = require('@admin-bro/express');
 const AdminBroMongoose = require('@admin-bro/mongoose');
 const mongoose = require("mongoose");
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs'); // For password encryption
 const path = require("path");
 
